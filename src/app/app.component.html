@@ -1,0 +1,25 @@
+<div class="form-group">
+<form class="col-xs-4 col-xs-offset-4" #nform="ngForm" >
+    <label >Name</label>
+    <input class="form-control" type="text" name='na' ngModel #nam='ngModel' required minlength='3'>
+  <div class="alert alert-danger" *ngIf='(nam.touched ||submitted) && nam.invalid'> 
+    <p *ngIf='nam.errors.required'>name is required </p>
+    <p *ngIf='nam.errors.minlength'>minlength  is required </p>
+  </div>
+    <label >Password</label>
+    <input  class="form-control" type="password" name='ps'ngModel #psw='ngModel'required minlength='3'>
+    <div class="alert alert-danger" *ngIf='(psw.touched||submitted )&& psw.invalid'>
+        <p *ngIf='psw.errors.required'>password is required</p>
+        <p *ngIf='psw.errors.minlength'>minlength  is required </p>
+    </div>
+    <label >Confirm Password</label>
+    <input  class="form-control" type="password" name='cps'  ngModel #cpsw='ngModel'required minlength='3' pattern="{{psw.value}}"><br>
+    <div class="alert alert-danger" *ngIf='(cpsw.touched ||submitted) && cpsw.invalid'>
+            <p *ngIf='cpsw.errors.required'> Confirm password is required</p>
+            <p *ngIf='cpsw.errors.minlength'>minlength  is required </p>
+            <p *ngIf='cpsw.errors.pattern'>Confirm password  must match </p>
+        </div>
+    <a class="btn btn-success" (click)="ed(nform)">submit</a>
+ </form>
+
+</div>
